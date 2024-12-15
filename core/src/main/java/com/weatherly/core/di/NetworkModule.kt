@@ -46,7 +46,6 @@ object NetworkModule {
             .addInterceptor(loggingInterceptor).build()
     }
 
-    @OptIn(ExperimentalSerializationApi::class)
     @Provides
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
