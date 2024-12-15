@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_no_internet">No Internet Connection. Please check your network.</string>
+    <string name="error_something_went_wrong">Something went wrong. Please try again.</string>
+    <string name="error_generic">An unknown error occurred.</string>
+</resources>

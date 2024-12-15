@@ -1,0 +1,98 @@
+# Gradle files
+.gradle/
+build/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# IntelliJ/Android Studio files
+*.iml
+.idea/
+.DS_Store
+
+# Android Studio specific caches and settings
+/.idea/caches/
+/.idea/libraries/
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+
+# Miscellaneous
+/captures/
+/.externalNativeBuild
+.cxx/
+
+# Generated files
+*.apk
+*.ap_
+
+# Gradle Wrapper
+gradle/wrapper/gradle-wrapper.properties
+
+# Keystore files
+*.jks
+
+# Android log files
+*.log
+
+# NDK files
+obj/
+
+# Crashlytics and Firebase
+crashlytics-build.properties
+fabric.properties
+
+# Local build config
+.env
+
+# Miscellaneous generated files
+*.class
+*.dex
+*.jar
+*.war
+*.ear
+*.app
+*.zip
+*.7z
+*.bat
+*.sh
+*.bak
+*.backup
+*.orig
+*.swp
+*~
+*.tmp
+
+# Unit test reports
+/test-results
+/outputs
+
+# Proguard files
+proguard/
+
+# Android lint files
+lint/intermediates/
+lint/generated/
+
+# Google Services
+google-services.json
+
+# Generated JSON file for use with Google services
+app/google-services.json
+
+# Idea files
+.idea/assetWizardSettings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/gradle.xml
+.idea/workspace.xml
+.idea/tasks.xml
+
+# kapt generated files
+**/build/kapt/
+
+# JetBrains IDEs
+/.idea/
+/*.iml
+# Include/exclude additional folders as required by the project
