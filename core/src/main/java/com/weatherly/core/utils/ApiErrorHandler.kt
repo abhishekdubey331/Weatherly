@@ -1,10 +1,10 @@
 package com.weatherly.core.utils
 
 import com.weatherly.core.R
-import java.io.IOException
-import javax.inject.Inject
 import org.json.JSONObject
 import retrofit2.HttpException
+import java.io.IOException
+import javax.inject.Inject
 
 data class ErrorMessageResult(
     val message: String?, // Custom error message, if available

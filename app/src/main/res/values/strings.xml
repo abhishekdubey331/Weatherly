@@ -3,4 +3,9 @@
     <string name="no_city_selected">No City Selected</string>
     <string name="please_search_for_a_city">Please Search For A City</string>
     <string name="search_location">Search Location</string>
+    <string name="humidity_label">Humidity</string>
+    <string name="uv_label">UV</string>
+    <string name="feels_like_label">Feels Like</string>
+    <string name="percentage_format">%s%%</string>
+    <string name="temperature_format">%s°</string>
 </resources>

@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LocationOn
@@ -21,13 +20,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
+import com.weatherly.app.R
 import com.weatherly.app.ui.theme.AppTheme
 
 @Composable
@@ -82,7 +81,8 @@ private fun CityNameWithIcon(cityName: String) {
 private fun TemperatureDisplay(temperature: String) {
     Spacer(modifier = Modifier.height(AppTheme.spacing.sm))
     Text(
-        text = "$temperature°", style = temperatureDisplay
+        text = stringResource(R.string.temperature_format, temperature),
+        style = temperatureDisplay
     )
 }
 
@@ -100,9 +100,19 @@ private fun WeatherDetailsCard(humidity: String, uvIndex: String, feelsLike: Str
             modifier = Modifier.padding(AppTheme.spacing.md),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            WeatherDetailItem(label = "Humidity", value = "$humidity%")
-            WeatherDetailItem(label = "UV", value = uvIndex)
-            WeatherDetailItem(label = "Feels Like", value = feelsLike)
+            WeatherDetailItem(
+                label = stringResource(R.string.humidity_label),
+                value = stringResource(R.string.percentage_format, humidity)
+            )
+            WeatherDetailItem(
+                label = stringResource(R.string.uv_label),
+                value = uvIndex
+            )
+            WeatherDetailItem(
+                label = stringResource(R.string.feels_like_label),
+                value = stringResource(R.string.temperature_format, feelsLike)
+            )
+
         }
     }
 }

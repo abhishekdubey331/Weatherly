@@ -5,13 +5,11 @@ import androidx.compose.material.Typography
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.weatherly.app.R
 
 object AppTheme {
@@ -30,6 +28,7 @@ object AppTheme {
         val xl: Dp = 32.dp,
         val xxl: Dp = 48.dp
     )
+
     object IconSize {
         val weatherIconSize = 120.dp
     }
@@ -54,18 +53,11 @@ private val LightColors = lightColors(
     onSurface = Color.Black
 )
 
-val AppTypography = Typography(
-    defaultFontFamily = AppTheme.fontFamily,
-    h1 = TextStyle(fontWeight = FontWeight.Bold, fontSize = 30.sp),
-    h2 = TextStyle(fontWeight = FontWeight.Bold, fontSize = 18.sp),
-    body1 = TextStyle(fontWeight = FontWeight.Normal, fontSize = 16.sp),
-    subtitle1 = TextStyle(fontWeight = FontWeight.Medium, fontSize = 14.sp),
-    caption = TextStyle(fontWeight = FontWeight.Light, fontSize = 12.sp)
-)
-
 @Composable
 fun AppTheme(content: @Composable () -> Unit) {
     MaterialTheme(
-        colors = LightColors, typography = AppTypography, content = content
+        colors = LightColors, typography = Typography(
+            defaultFontFamily = AppTheme.fontFamily
+        ), content = content
     )
 }
