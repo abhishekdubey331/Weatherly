@@ -98,4 +98,3 @@ fun WeatherIconImage(weatherIconUrl: String) {
             .padding(AppTheme.spacing.sm)
     )
 }
-

@@ -4,10 +4,13 @@ import com.weatherly.core.dto.ConditionDto
 import com.weatherly.core.dto.CurrentDto
 import com.weatherly.core.dto.LocationDto
 import com.weatherly.core.dto.WeatherResponseDto
+import com.weatherly.core.utils.DispatcherProvider
 import com.weatherly.data.local.WeatherLocalDataSource
 import com.weatherly.data.mapper.toDomain
 import com.weatherly.data.remote.WeatherRemoteDataSource
 import com.weatherly.domain.repository.WeatherRepository
+import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.TestCoroutineScheduler
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -25,17 +28,25 @@ class WeatherRepositoryImplTest {
     @Mock
     private lateinit var localDataSource: WeatherLocalDataSource
 
+    @Mock
+    private lateinit var dispatcherProvider: DispatcherProvider
+
+    private lateinit var testScheduler: TestCoroutineScheduler
+
     private lateinit var repository: WeatherRepository
 
     @Before
     fun setUp() {
         MockitoAnnotations.openMocks(this)
-        repository = WeatherRepositoryImpl(remoteDataSource, localDataSource)
+        testScheduler = TestCoroutineScheduler()
+        val testDispatcher = StandardTestDispatcher(testScheduler)
+        whenever(dispatcherProvider.io).thenReturn(testDispatcher)
+        repository = WeatherRepositoryImpl(remoteDataSource, localDataSource, dispatcherProvider)
     }
 
     @Test
     fun `Given remote data source returns weather response, When fetchWeather is called, Then return WeatherInfo`() =
-        runTest {
+        runTest(testScheduler) {
             // Given
             val city = "London"
             whenever(remoteDataSource.getCurrentWeather(city)).thenReturn(weatherResponseDto)
@@ -50,7 +61,7 @@ class WeatherRepositoryImplTest {
 
     @Test
     fun `Given cached weather data exists, When getCachedWeather is called, Then return cached WeatherInfo`() =
-        runTest {
+        runTest(testScheduler) {
             // Given
             val cachedWeather = weatherResponseDto.toDomain()
             whenever(localDataSource.getWeatherData()).thenReturn(cachedWeather)
@@ -65,8 +76,7 @@ class WeatherRepositoryImplTest {
 
     @Test
     fun `Given no cached weather data exists, When getCachedWeather is called, Then return null`() =
-        runTest {
-            // Given
+        runTest(testScheduler) {
             whenever(localDataSource.getWeatherData()).thenReturn(null)
 
             // When
@@ -78,7 +88,7 @@ class WeatherRepositoryImplTest {
         }
 
     @Test
-    fun `cacheWeatherData saves WeatherInfo to local data source`() = runTest {
+    fun `cacheWeatherData saves WeatherInfo to local data source`() = runTest(testScheduler) {
         // Given
         val weatherInfo = weatherResponseDto.toDomain()
 

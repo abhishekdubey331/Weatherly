@@ -64,7 +64,7 @@ fun WeatherContent(uiState: WeatherUiState, viewModel: WeatherViewModel) {
 
         is WeatherUiState.Error -> {
             val errorText = uiState.message ?: uiState.resourceId?.let { stringResource(id = it) }
-            ?: stringResource(id = R.string.error_generic)
+                ?: stringResource(id = R.string.error_generic)
 
             ErrorMessage(errorText)
         }
@@ -82,7 +82,8 @@ fun WeatherCardContent(weatherInfo: WeatherInfo?, onClick: (WeatherInfo) -> Unit
         cityName = weatherInfo.cityName,
         temperature = weatherInfo.temperature.toString(),
         weatherIconUrl = weatherInfo.conditionIconUrl,
-        onWeatherDataClicked = { onClick(weatherInfo) })
+        onWeatherDataClicked = { onClick(weatherInfo) }
+    )
 }
 
 @Composable

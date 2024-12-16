@@ -66,7 +66,8 @@ private fun WeatherIcon(weatherIconUrl: String) {
 private fun CityNameWithIcon(cityName: String) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         Text(
-            text = cityName, style = cityTitle
+            text = cityName,
+            style = cityTitle
         )
         Icon(
             imageVector = Icons.Default.LocationOn,
@@ -112,7 +113,6 @@ private fun WeatherDetailsCard(humidity: String, uvIndex: String, feelsLike: Str
                 label = stringResource(R.string.feels_like_label),
                 value = stringResource(R.string.temperature_format, feelsLike)
             )
-
         }
     }
 }
@@ -123,23 +123,33 @@ private fun WeatherDetailItem(label: String, value: String) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = label, fontSize = 14.sp, fontWeight = FontWeight.Normal, color = Color.Gray
+            text = label,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Normal,
+            color = Color.Gray
         )
         Spacer(modifier = Modifier.height(AppTheme.spacing.xs))
         Text(
-            text = value, fontSize = 16.sp, fontWeight = FontWeight.Bold, color = Color(0xFF9A9A9A)
+            text = value,
+            fontSize = 16.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color(0xFF9A9A9A)
         )
     }
 }
 
 private val cityTitle = TextStyle(
     fontFamily = AppTheme.fontFamily,
-    fontSize = 28.sp, fontWeight = FontWeight.Bold, color = Color.Black
+    fontSize = 28.sp,
+    fontWeight = FontWeight.Bold,
+    color = Color.Black
 )
 
 private val temperatureDisplay = TextStyle(
     fontFamily = AppTheme.fontFamily,
-    fontSize = 48.sp, fontWeight = FontWeight.Bold, color = Color.Black
+    fontSize = 48.sp,
+    fontWeight = FontWeight.Bold,
+    color = Color.Black
 )
 
 @Preview(showBackground = true)

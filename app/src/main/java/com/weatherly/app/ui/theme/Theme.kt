@@ -39,7 +39,6 @@ private val LightGray = Color(0xFFF0F0F0)
 private val Purple = Color(0xFFBB86FC)
 private val DeepPurple = Color(0xFFBB86FC)
 
-
 private val LightColors = lightColors(
     primary = White,
     primaryVariant = LightGray,
@@ -56,8 +55,10 @@ private val LightColors = lightColors(
 @Composable
 fun AppTheme(content: @Composable () -> Unit) {
     MaterialTheme(
-        colors = LightColors, typography = Typography(
+        colors = LightColors,
+        typography = Typography(
             defaultFontFamily = AppTheme.fontFamily
-        ), content = content
+        ),
+        content = content
     )
 }

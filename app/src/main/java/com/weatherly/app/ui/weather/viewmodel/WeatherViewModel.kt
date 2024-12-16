@@ -8,6 +8,7 @@ import com.weatherly.domain.model.WeatherInfo
 import com.weatherly.domain.usecase.CacheWeatherDataUseCase
 import com.weatherly.domain.usecase.GetWeatherUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -15,7 +16,6 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @HiltViewModel
 class WeatherViewModel @Inject constructor(

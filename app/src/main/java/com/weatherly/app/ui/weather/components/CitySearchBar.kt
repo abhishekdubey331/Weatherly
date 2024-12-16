@@ -26,7 +26,7 @@ import com.weatherly.app.ui.theme.AppTheme
 @Composable
 fun CitySearchBar(
     query: String,
-    onQueryChange: (String) -> Unit,
+    onQueryChange: (String) -> Unit
 ) {
     Spacer(modifier = Modifier.height(AppTheme.spacing.lg))
     Row(
@@ -41,7 +41,8 @@ fun CitySearchBar(
             onValueChange = onQueryChange,
             placeholder = {
                 Text(
-                    text = stringResource(R.string.search_location), color = Color.Gray
+                    text = stringResource(R.string.search_location),
+                    color = Color.Gray
                 )
             },
             maxLines = 1,
